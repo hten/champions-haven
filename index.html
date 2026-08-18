@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Champion's Haven | Klassinen hieronta ja urheiluhieronta</title>
-    <meta name="description" content="Champion's Haven tarjoaa klassista hierontaa ja urheiluhierontaa palautumisen, hyvinvoinnin ja lihashuollon tueksi. Katso hinnasto ja varaa aika hierontaan.">
-    <meta name="keywords" content="Champion's Haven, hieronta, urheiluhieronta, klassinen hieronta, hyvinvointi, lihashuolto, palautuminen">
+    <title>Champion's Haven | Klassinen hieronta ja urheiluhieronta Kuopiossa</title>
+    <meta name="description" content="Champion's Haven tarjoaa klassista hierontaa ja urheiluhierontaa Kuopiossa palautumisen, hyvinvoinnin ja lihashuollon tueksi. Katso hinnasto ja varaa aika hierontaan.">
+    <meta name="keywords" content="Champion's Haven, Tuomo Eronen, hieronta Kuopio, urheiluhieronta Kuopio, klassinen hieronta, hyvinvointi, lihashuolto, palautuminen">
     <meta property="og:title" content="Champion's Haven | Hyvinvointi ja hieronta">
     <meta property="og:description" content="Klassista hierontaa ja urheiluhierontaa hyvinvoinnin, lihashuollon ja palautumisen tueksi.">
     <meta property="og:type" content="website">
@@ -51,6 +51,48 @@
             background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
         }
 
+        .mood-section {
+            background: #080705;
+            isolation: isolate;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .mood-section > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .mood-section::before,
+        .mood-section::after {
+            content: "";
+            inset: 0;
+            pointer-events: none;
+            position: absolute;
+        }
+
+        .mood-section::before {
+            background-position: center;
+            background-size: cover;
+            filter: saturate(1.08) contrast(1.05);
+            z-index: 0;
+        }
+
+        .mood-section::after {
+            background:
+                linear-gradient(90deg, rgba(8, 7, 5, 0.7), rgba(8, 7, 5, 0.32) 48%, rgba(8, 7, 5, 0.68)),
+                linear-gradient(180deg, rgba(8, 7, 5, 0.74), rgba(8, 7, 5, 0.22) 45%, rgba(8, 7, 5, 0.8));
+            z-index: 1;
+        }
+
+        .mood-prices::before {
+            background-image: url("images/golden-haze-1.jpg");
+        }
+
+        .mood-booking::before {
+            background-image: url("images/golden-hase-2.jpg");
+        }
+
         .soft-ring {
             box-shadow: 0 0 0 1px rgba(217, 170, 67, 0.22), 0 22px 80px rgba(0, 0, 0, 0.22);
         }
@@ -78,13 +120,27 @@
         "description": "Klassista hierontaa ja urheiluhierontaa hyvinvoinnin, lihashuollon ja palautumisen tueksi.",
         "telephone": "+358458629595",
         "email": "mestareidenturvasatama@gmail.com",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Haapaniemenkatu 34",
+            "postalCode": "70110",
+            "addressLocality": "Kuopio",
+            "addressCountry": "FI"
+        },
+        "areaServed": "Kuopio",
+        "hasMap": "https://www.google.com/maps/search/?api=1&query=Haapaniemenkatu%2034%2C%2070110%20Kuopio",
+        "founder": {
+            "@type": "Person",
+            "name": "Tuomo Eronen",
+            "description": "Champion's Havenin yrittäjä, jonka työssä korostuvat hieronta, palautuminen ja kokonaisvaltainen hyvinvointi."
+        },
         "priceRange": "35-85 EUR",
         "makesOffer": [
-            { "@type": "Offer", "name": "Hieronta 30 min", "price": "35", "priceCurrency": "EUR" },
-            { "@type": "Offer", "name": "Hieronta 45 min", "price": "45", "priceCurrency": "EUR" },
-            { "@type": "Offer", "name": "Hieronta 60 min", "price": "60", "priceCurrency": "EUR" },
-            { "@type": "Offer", "name": "Hieronta 90 min", "price": "75", "priceCurrency": "EUR" },
-            { "@type": "Offer", "name": "Hieronta 120 min", "price": "85", "priceCurrency": "EUR" }
+            { "@type": "Offer", "name": "Pienen alueen hieronta 30 min", "price": "35", "priceCurrency": "EUR" },
+            { "@type": "Offer", "name": "Keskikokoisen alueen hieronta 45 min", "price": "45", "priceCurrency": "EUR" },
+            { "@type": "Offer", "name": "Laajemman alueen hieronta 60 min", "price": "60", "priceCurrency": "EUR" },
+            { "@type": "Offer", "name": "Kahden alueen hieronta 90 min", "price": "75", "priceCurrency": "EUR" },
+            { "@type": "Offer", "name": "Useamman alueen hieronta 120 min", "price": "85", "priceCurrency": "EUR" }
         ]
     }
     </script>
@@ -94,10 +150,11 @@
     <nav class="fixed top-0 z-50 w-full border-b border-[#d9aa43]/20 bg-[#080705]/90 backdrop-blur-md">
         <div class="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
             <a href="#" class="font-cinzel gold-text text-lg font-bold tracking-[0.18em] md:text-2xl">CHAMPION'S HAVEN</a>
-            <div class="hidden items-center gap-7 text-sm font-medium text-[#fff7e6]/80 md:flex">
+            <div class="hidden items-center gap-6 text-sm font-medium text-[#fff7e6]/80 md:flex">
                 <a href="#about" class="transition hover:text-[#f2cf83]">Tietoa</a>
                 <a href="#prices" class="transition hover:text-[#f2cf83]">Hinnasto</a>
                 <a href="#booking" class="transition hover:text-[#f2cf83]">Ajanvaraus</a>
+                <a href="#location" class="transition hover:text-[#f2cf83]">Sijainti</a>
                 <a href="#contact" class="gold-bg rounded-full px-5 py-2.5 font-semibold transition hover:brightness-110">Ota yhteyttä</a>
             </div>
             <a href="#booking" class="rounded-full border border-[#d9aa43]/50 px-4 py-2 text-sm font-semibold text-[#f2cf83] md:hidden">Varaa</a>
@@ -107,7 +164,7 @@
     <main>
         <section class="relative flex min-h-[88vh] items-end overflow-hidden px-5 pb-12 pt-28 md:pb-16">
             <img
-                src="../Downloads/WhatsApp%20Image%202026-08-11%20at%2008.25.06.jpeg"
+                src="images/haven-bg.jpg"
                 alt="Champion's Haven hyvinvointi ja hieronta"
                 class="hero-image absolute inset-0 h-full w-full bg-black object-contain object-center md:object-cover"
             >
@@ -138,6 +195,7 @@
                 <div class="soft-ring hidden rounded-lg border border-[#d9aa43]/20 bg-[#080705]/70 p-5 backdrop-blur-sm md:block">
                     <p class="font-cinzel gold-text text-sm uppercase tracking-[0.22em]">Yhteystiedot</p>
                     <div class="mt-4 space-y-3 text-base text-[#fff7e6]/90">
+                        <a href="https://www.google.com/maps/search/?api=1&amp;query=Haapaniemenkatu%2034%2C%2070110%20Kuopio" class="block transition hover:text-[#f2cf83]">Haapaniemenkatu 34, Kuopio</a>
                         <a href="tel:+358458629595" class="block transition hover:text-[#f2cf83]">045 862 9595</a>
                         <a href="mailto:mestareidenturvasatama@gmail.com" class="block break-words transition hover:text-[#f2cf83]">mestareidenturvasatama@gmail.com</a>
                     </div>
@@ -177,7 +235,7 @@
             </div>
         </section>
 
-        <section id="prices" class="px-5 py-20 md:py-24">
+        <section id="prices" class="mood-section mood-prices px-5 py-20 md:py-24">
             <div class="mx-auto max-w-6xl">
                 <div class="mb-10 max-w-2xl">
                     <p class="font-cinzel gold-text text-sm font-semibold uppercase tracking-[0.22em]">Hinnasto</p>
@@ -186,44 +244,49 @@
                     <p class="mt-4 text-lg leading-8 text-[#fff7e6]/70">Valitse sopiva kesto palautumiseen, lihashuoltoon tai pidempään koko kehon käsittelyyn.</p>
                 </div>
 
-                <div class="soft-ring overflow-hidden rounded-lg border border-[#d9aa43]/20 bg-[#100e0a]">
-                    <div class="grid grid-cols-[1fr_auto_auto] gap-4 border-b border-[#d9aa43]/20 px-5 py-4 text-sm font-semibold uppercase tracking-[0.16em] text-[#d9aa43] md:px-8">
-                        <span>Palvelu</span>
-                        <span>Kesto</span>
-                        <span>Hinta</span>
-                    </div>
-                    <div class="divide-y divide-[#d9aa43]/10">
-                        <div class="grid grid-cols-[1fr_auto_auto] items-center gap-4 px-5 py-5 md:px-8">
-                            <h3 class="font-semibold text-white">Hieronta</h3>
-                            <span class="text-[#fff7e6]/75">30 min</span>
-                            <strong class="gold-text font-cinzel text-xl font-bold">35 €</strong>
-                        </div>
-                        <div class="grid grid-cols-[1fr_auto_auto] items-center gap-4 px-5 py-5 md:px-8">
-                            <h3 class="font-semibold text-white">Hieronta</h3>
-                            <span class="text-[#fff7e6]/75">45 min</span>
-                            <strong class="gold-text font-cinzel text-xl font-bold">45 €</strong>
-                        </div>
-                        <div class="grid grid-cols-[1fr_auto_auto] items-center gap-4 px-5 py-5 md:px-8">
-                            <h3 class="font-semibold text-white">Hieronta</h3>
-                            <span class="text-[#fff7e6]/75">1 h</span>
-                            <strong class="gold-text font-cinzel text-xl font-bold">60 €</strong>
-                        </div>
-                        <div class="grid grid-cols-[1fr_auto_auto] items-center gap-4 px-5 py-5 md:px-8">
-                            <h3 class="font-semibold text-white">Hieronta</h3>
-                            <span class="text-[#fff7e6]/75">1,5 h</span>
-                            <strong class="gold-text font-cinzel text-xl font-bold">75 €</strong>
-                        </div>
-                        <div class="grid grid-cols-[1fr_auto_auto] items-center gap-4 px-5 py-5 md:px-8">
-                            <h3 class="font-semibold text-white">Hieronta</h3>
-                            <span class="text-[#fff7e6]/75">2 h</span>
-                            <strong class="gold-text font-cinzel text-xl font-bold">85 €</strong>
-                        </div>
+                <div class="soft-ring overflow-hidden rounded-lg border border-[#d9aa43]/20 bg-[#100e0a]/90">
+                    <div class="divide-y divide-[#d9aa43]/20">
+                        <article class="grid gap-4 px-5 py-6 md:grid-cols-[1fr_auto] md:items-center md:px-8">
+                            <div>
+                                <h3 class="font-cinzel gold-text text-3xl font-bold tracking-wide">30 min</h3>
+                                <p class="mt-2 text-base leading-7 text-[#fff7e6]/80 md:text-lg">Pienen alueen hieronta, esimerkiksi niska, hartiat, pohkeet tai purentalihakset.</p>
+                            </div>
+                            <strong class="gold-text font-cinzel text-3xl font-bold md:text-4xl">35 €</strong>
+                        </article>
+                        <article class="grid gap-4 px-5 py-6 md:grid-cols-[1fr_auto] md:items-center md:px-8">
+                            <div>
+                                <h3 class="font-cinzel gold-text text-3xl font-bold tracking-wide">45 min</h3>
+                                <p class="mt-2 text-base leading-7 text-[#fff7e6]/80 md:text-lg">Keskikokoisen alueen käsittely, esimerkiksi niska-hartiaseutu, alaselkä tai jalat kevyesti.</p>
+                            </div>
+                            <strong class="gold-text font-cinzel text-3xl font-bold md:text-4xl">45 €</strong>
+                        </article>
+                        <article class="grid gap-4 px-5 py-6 md:grid-cols-[1fr_auto] md:items-center md:px-8">
+                            <div>
+                                <h3 class="font-cinzel gold-text text-3xl font-bold tracking-wide">60 min</h3>
+                                <p class="mt-2 text-base leading-7 text-[#fff7e6]/80 md:text-lg">Laajemman alueen hieronta, esimerkiksi koko selkä, jalat tai huolellinen ylävartalon käsittely.</p>
+                            </div>
+                            <strong class="gold-text font-cinzel text-3xl font-bold md:text-4xl">60 €</strong>
+                        </article>
+                        <article class="grid gap-4 px-5 py-6 md:grid-cols-[1fr_auto] md:items-center md:px-8">
+                            <div>
+                                <h3 class="font-cinzel gold-text text-3xl font-bold tracking-wide">90 min</h3>
+                                <p class="mt-2 text-base leading-7 text-[#fff7e6]/80 md:text-lg">Kahden alueen hieronta tai perusteellisempi käsittely, esimerkiksi selkä ja jalat.</p>
+                            </div>
+                            <strong class="gold-text font-cinzel text-3xl font-bold md:text-4xl">75 €</strong>
+                        </article>
+                        <article class="grid gap-4 px-5 py-6 md:grid-cols-[1fr_auto] md:items-center md:px-8">
+                            <div>
+                                <h3 class="font-cinzel gold-text text-3xl font-bold tracking-wide">120 min</h3>
+                                <p class="mt-2 text-base leading-7 text-[#fff7e6]/80 md:text-lg">Useamman alueen laaja hieronta tai rauhallinen koko kehon käsittely.</p>
+                            </div>
+                            <strong class="gold-text font-cinzel text-3xl font-bold md:text-4xl">85 €</strong>
+                        </article>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="booking" class="bg-[#17130d] px-5 py-20 md:py-24">
+        <section id="booking" class="mood-section mood-booking px-5 py-20 md:py-24">
             <div class="mx-auto grid max-w-6xl gap-12 md:grid-cols-[0.8fr_1.2fr] md:items-start">
                 <div class="space-y-5">
                     <p class="font-cinzel gold-text text-sm font-semibold uppercase tracking-[0.22em]">Ajanvaraus</p>
@@ -243,11 +306,11 @@
                         <label for="booking-service" class="mb-2 block text-sm font-semibold text-[#f2cf83]">Palvelu</label>
                         <select id="booking-service" name="service" class="field" required>
                             <option value="">Valitse palvelu</option>
-                            <option>Hieronta 30 min - 35 €</option>
-                            <option>Hieronta 45 min - 45 €</option>
-                            <option>Hieronta 1 h - 60 €</option>
-                            <option>Hieronta 1,5 h - 75 €</option>
-                            <option>Hieronta 2 h - 85 €</option>
+                            <option>30 min - pienen alueen hieronta - 35 €</option>
+                            <option>45 min - keskikokoisen alueen hieronta - 45 €</option>
+                            <option>60 min - laajemman alueen hieronta - 60 €</option>
+                            <option>90 min - kahden alueen hieronta - 75 €</option>
+                            <option>120 min - useamman alueen hieronta - 85 €</option>
                         </select>
                     </div>
                     <div>
@@ -274,6 +337,52 @@
                         Lähetä varauspyyntö
                     </button>
                 </form>
+            </div>
+        </section>
+
+        <section id="location" class="bg-[#0a0a0a] px-5 py-20 text-[#fff7e6] md:py-24">
+            <div class="mx-auto grid max-w-6xl gap-12 md:grid-cols-[0.85fr_1.15fr] md:items-start">
+                <div>
+                    <p class="font-cinzel gold-text text-sm font-semibold uppercase tracking-[0.22em]">Sijainti</p>
+                    <h2 class="font-display mt-3 text-4xl font-semibold leading-tight text-white md:text-5xl">Löydät Havenin Kuopion keskustasta</h2>
+                    <div class="gold-line mt-6 h-0.5 w-16"></div>
+                </div>
+
+                <div class="soft-ring rounded-lg border border-[#d9aa43]/20 bg-[#100e0a]/90 p-5 md:p-8">
+                    <address class="not-italic">
+                        <p class="font-cinzel gold-text text-2xl font-bold tracking-wide">Haapaniemenkatu 34</p>
+                        <p class="mt-2 text-lg text-[#fff7e6]/80">70110 Kuopio</p>
+                    </address>
+                    <div class="mt-8 space-y-4 text-lg leading-8 text-[#fff7e6]/75">
+                        <p>
+                            Haven sijaitsee Hypoxi Studion yhteydessä aivan kaupungintalon takana, kulmittain vanhassa Palatsin talossa.
+                        </p>
+                        <p>
+                            Studion edessä on muutamia kadunvarsipaikkoja ja Toriparkki sijaitsee aivan vieressä. Lämpimästi tervetuloa!
+                        </p>
+                    </div>
+                    <a href="https://www.google.com/maps/search/?api=1&amp;query=Haapaniemenkatu%2034%2C%2070110%20Kuopio" class="gold-bg mt-8 inline-flex rounded-full px-7 py-3.5 font-semibold transition hover:brightness-110">
+                        Avaa kartta
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="entrepreneur" class="bg-[#0a0a0a] px-5 py-20 text-[#fff7e6] md:py-24">
+            <div class="mx-auto grid max-w-6xl gap-12 md:grid-cols-[0.85fr_1.15fr] md:items-start">
+                <div>
+                    <p class="font-cinzel gold-text text-sm font-semibold uppercase tracking-[0.22em]">Yrittäjä</p>
+                    <h2 class="font-display mt-3 text-4xl font-semibold leading-tight text-white md:text-5xl">Tuomo Eronen</h2>
+                    <div class="gold-line mt-6 h-0.5 w-16"></div>
+                </div>
+
+                <div class="soft-ring rounded-lg border border-[#d9aa43]/20 bg-[#100e0a]/90 p-5 md:p-8">
+                    <div class="space-y-6 text-lg leading-8 text-[#fff7e6]/75">
+                        <p>
+                            Tuomo Eronen on toiminut ammattilaisurheilijana vuosina 2009–2024 sekä pitkään nyrkkeily- ja hyvinvointivalmentajana. Champion's Havenissa hänen osaamisensa näkyy käytännönläheisenä hierontana, jossa huomioidaan kehon kuormitus, palautuminen ja asiakkaan kokonaisvaltainen hyvinvointi.
+                        </p>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -318,6 +427,7 @@
         <div class="mx-auto flex max-w-6xl flex-col gap-3 md:flex-row md:items-center md:justify-between">
             <p>&copy; 2026 Champion's Haven. Kaikki oikeudet pidätetään.</p>
             <div class="flex flex-col gap-2 md:flex-row md:gap-6">
+                <a href="https://www.google.com/maps/search/?api=1&amp;query=Haapaniemenkatu%2034%2C%2070110%20Kuopio" class="transition hover:text-[#f2cf83]">Haapaniemenkatu 34, Kuopio</a>
                 <a href="tel:+358458629595" class="transition hover:text-[#f2cf83]">045 862 9595</a>
                 <a href="mailto:mestareidenturvasatama@gmail.com" class="break-words transition hover:text-[#f2cf83]">mestareidenturvasatama@gmail.com</a>
             </div>
