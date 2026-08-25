@@ -366,7 +366,11 @@
                     </div>
                 </div>
 
-                <form class="soft-ring grid gap-5 rounded-lg border border-[#d9aa43]/20 bg-[#080705]/60 p-5 md:grid-cols-2 md:p-8" action="#" method="POST">
+                <form class="soft-ring grid gap-5 rounded-lg border border-[#d9aa43]/20 bg-[#080705]/60 p-5 md:grid-cols-2 md:p-8" action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="3ae564fe-cc83-41fe-943b-3d2913246280">
+                    <input type="hidden" name="subject" value="Uusi ajanvarauspyyntö Champion's Haven -sivustolta">
+                    <input type="hidden" name="from_name" value="Champion's Haven ajanvaraus">
+                    <input type="checkbox" name="botcheck" class="hidden" tabindex="-1" autocomplete="off">
                     <div class="md:col-span-2">
                         <label for="booking-service" class="mb-2 block text-sm font-semibold text-[#f2cf83]">Palvelu</label>
                         <select id="booking-service" name="service" class="field" required>
@@ -393,6 +397,10 @@
                     <div>
                         <label for="booking-phone" class="mb-2 block text-sm font-semibold text-[#f2cf83]">Puhelin</label>
                         <input id="booking-phone" name="phone" type="tel" autocomplete="tel" class="field" required>
+                    </div>
+                    <div class="md:col-span-2">
+                        <label for="booking-email" class="mb-2 block text-sm font-semibold text-[#f2cf83]">Sähköposti</label>
+                        <input id="booking-email" name="email" type="email" autocomplete="email" class="field" required>
                     </div>
                     <div class="md:col-span-2">
                         <label for="booking-message" class="mb-2 block text-sm font-semibold text-[#f2cf83]">Lisätiedot</label>
@@ -466,7 +474,11 @@
                     </div>
                 </div>
 
-                <form class="soft-ring grid gap-5 rounded-lg border border-[#d9aa43]/20 bg-[#0a0a0a] p-5 md:p-8" action="https://usebasin.com/f/REPLACE_WITH_BASIN_FORM_ID" method="POST">
+                <form class="soft-ring grid gap-5 rounded-lg border border-[#d9aa43]/20 bg-[#0a0a0a] p-5 md:p-8" action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="5f4bda54-a67d-4f7a-b31f-f7947a14ae36">
+                    <input type="hidden" name="subject" value="Uusi yhteydenotto Champion's Haven -sivustolta">
+                    <input type="hidden" name="from_name" value="Champion's Haven yhteydenotto">
+                    <input type="checkbox" name="botcheck" class="hidden" tabindex="-1" autocomplete="off">
                     <div>
                         <label for="contact-name" class="mb-2 block text-sm font-semibold text-[#f2cf83]">Nimi</label>
                         <input id="contact-name" name="name" type="text" autocomplete="name" class="field" required>
@@ -483,7 +495,6 @@
                         <label for="contact-message" class="mb-2 block text-sm font-semibold text-[#f2cf83]">Viesti</label>
                         <textarea id="contact-message" name="message" rows="5" class="field" required></textarea>
                     </div>
-                    <input type="hidden" name="_subject" value="Uusi yhteydenotto Champion's Haven -sivustolta">
                     <button type="submit" class="gold-bg rounded-full px-7 py-3.5 font-semibold transition hover:brightness-110">
                         Lähetä viesti
                     </button>
