@@ -366,10 +366,11 @@
                     </div>
                 </div>
 
-                <form class="soft-ring grid gap-5 rounded-lg border border-[#d9aa43]/20 bg-[#080705]/60 p-5 md:grid-cols-2 md:p-8" action="https://api.web3forms.com/submit" method="POST">
+                <form class="js-web3form soft-ring grid gap-5 rounded-lg border border-[#d9aa43]/20 bg-[#080705]/60 p-5 md:grid-cols-2 md:p-8" action="https://api.web3forms.com/submit" method="POST" data-success-message="Kiitos varauspyynnöstä. Palaamme sinulle mahdollisimman pian ajan vahvistamiseksi.">
                     <input type="hidden" name="access_key" value="3ae564fe-cc83-41fe-943b-3d2913246280">
                     <input type="hidden" name="subject" value="Uusi ajanvarauspyyntö Champion's Haven -sivustolta">
                     <input type="hidden" name="from_name" value="Champion's Haven ajanvaraus">
+                    <input type="hidden" name="redirect" value="https://mestareidenturvasatama.fi/kiitos.html">
                     <input type="checkbox" name="botcheck" class="hidden" tabindex="-1" autocomplete="off">
                     <div class="md:col-span-2">
                         <label for="booking-service" class="mb-2 block text-sm font-semibold text-[#f2cf83]">Palvelu</label>
@@ -409,6 +410,7 @@
                     <button type="submit" class="gold-bg md:col-span-2 rounded-full px-7 py-3.5 font-semibold transition hover:brightness-110">
                         Lähetä varauspyyntö
                     </button>
+                    <p class="form-status hidden rounded-lg border px-4 py-3 text-sm md:col-span-2" tabindex="-1" aria-live="polite"></p>
                 </form>
             </div>
         </section>
@@ -474,10 +476,11 @@
                     </div>
                 </div>
 
-                <form class="soft-ring grid gap-5 rounded-lg border border-[#d9aa43]/20 bg-[#0a0a0a] p-5 md:p-8" action="https://api.web3forms.com/submit" method="POST">
+                <form class="js-web3form soft-ring grid gap-5 rounded-lg border border-[#d9aa43]/20 bg-[#0a0a0a] p-5 md:p-8" action="https://api.web3forms.com/submit" method="POST" data-success-message="Kiitos viestistä. Palaamme sinulle mahdollisimman pian.">
                     <input type="hidden" name="access_key" value="5f4bda54-a67d-4f7a-b31f-f7947a14ae36">
                     <input type="hidden" name="subject" value="Uusi yhteydenotto Champion's Haven -sivustolta">
                     <input type="hidden" name="from_name" value="Champion's Haven yhteydenotto">
+                    <input type="hidden" name="redirect" value="https://mestareidenturvasatama.fi/kiitos.html">
                     <input type="checkbox" name="botcheck" class="hidden" tabindex="-1" autocomplete="off">
                     <div>
                         <label for="contact-name" class="mb-2 block text-sm font-semibold text-[#f2cf83]">Nimi</label>
@@ -498,6 +501,7 @@
                     <button type="submit" class="gold-bg rounded-full px-7 py-3.5 font-semibold transition hover:brightness-110">
                         Lähetä viesti
                     </button>
+                    <p class="form-status hidden rounded-lg border px-4 py-3 text-sm md:col-span-2" tabindex="-1" aria-live="polite"></p>
                 </form>
             </div>
         </section>
@@ -514,5 +518,55 @@
         </div>
     </footer>
 
+    <script>
+        document.querySelectorAll('.js-web3form').forEach((form) => {
+            const status = form.querySelector('.form-status');
+            const submitButton = form.querySelector('button[type="submit"]');
+            const defaultButtonText = submitButton.textContent.trim();
+
+            form.addEventListener('submit', async (event) => {
+                event.preventDefault();
+
+                const formData = new FormData(form);
+                formData.delete('redirect');
+
+                const data = Object.fromEntries(formData);
+                const successMessage = form.dataset.successMessage || 'Kiitos viestistä. Palaamme sinulle mahdollisimman pian.';
+
+                submitButton.disabled = true;
+                submitButton.textContent = 'Lähetetään...';
+                status.className = 'form-status rounded-lg border border-[#d9aa43]/25 bg-[#d9aa43]/10 px-4 py-3 text-sm text-[#fff7e6] md:col-span-2';
+                status.textContent = 'Lähetetään viestiä...';
+
+                try {
+                    const response = await fetch(form.action, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        body: JSON.stringify(data)
+                    });
+
+                    const result = await response.json();
+
+                    if (response.ok && result.success) {
+                        form.reset();
+                        status.className = 'form-status rounded-lg border border-[#d9aa43]/35 bg-[#d9aa43]/15 px-4 py-3 text-sm font-medium text-[#f2cf83] md:col-span-2';
+                        status.textContent = successMessage;
+                        status.focus();
+                    } else {
+                        throw new Error(result.message || 'Lähetys epäonnistui.');
+                    }
+                } catch (error) {
+                    status.className = 'form-status rounded-lg border border-red-300/35 bg-red-950/30 px-4 py-3 text-sm text-red-100 md:col-span-2';
+                    status.textContent = 'Viestin lähetys ei onnistunut juuri nyt. Voit ottaa yhteyttä myös puhelimitse tai sähköpostilla.';
+                } finally {
+                    submitButton.disabled = false;
+                    submitButton.textContent = defaultButtonText;
+                }
+            });
+        });
+    </script>
 </body>
 </html>
